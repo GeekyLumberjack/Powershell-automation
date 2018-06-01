@@ -1,10 +1,10 @@
 ﻿# input file
 
-$findsheet = "C:\Users\MARSHALL.S.HOLME1114\Documents\EFS_Protected\Discover-Strealined\blanks.txt"
+$findsheet = "INPUTFILE"
 
 $blankips = Get-Content $findsheet
 
-$outputfile = 'C:\Users\MARSHALL.S.HOLME1114\Documents\EFS_Protected\Discover-Strealined\blanks.csv'
+$outputfile = 'OUTPUTFILE'
 
 $report = @()
 
@@ -12,7 +12,7 @@ foreach ($blankip in $blankips) {
         
         $IPname = $null
         $IPname1 = $null
-           if ($IPname = Get-DhcpServerv4Reservation -ComputerName "HOODA5NECSSB181.nasw.ds.army.mil" -IPAddress $blankip -ErrorAction SilentlyContinue) {
+           if ($IPname = Get-DhcpServerv4Reservation -ComputerName "DHCPSERVER ADDRESS" -IPAddress $blankip -ErrorAction SilentlyContinue) {
             $namefound = $IPname.Name
             $MACfound = $IPname.ClientId
             $IPnamefound = New-Object PSObject
@@ -21,7 +21,7 @@ foreach ($blankip in $blankips) {
             $IPnamefound | Add-Member NoteProperty 'MAC:' $MACfound
             $report += $IPnamefound
             }
-           Elseif ($IPname1 = Get-DhcpServerv4Lease -ComputerName "HOODA5NECSSB181.nasw.ds.army.mil" -IPAddress $blankip -ErrorAction SilentlyContinue) {
+           Elseif ($IPname1 = Get-DhcpServerv4Lease -ComputerName "SHCPSERVER ADDRESS" -IPAddress $blankip -ErrorAction SilentlyContinue) {
            $namefound1 = $IPname1.Name
            $MACfound1 = $IPname1.ClientId
            $IPnamefound1 = New-Object PSObject
