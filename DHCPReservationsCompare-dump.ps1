@@ -21,7 +21,7 @@ foreach ($blankip in $blankips) {
             $IPnamefound | Add-Member NoteProperty 'MAC:' $MACfound
             $report += $IPnamefound
             }
-           Elseif ($IPname1 = Get-DhcpServerv4Lease -ComputerName "SHCPSERVER ADDRESS" -IPAddress $blankip -ErrorAction SilentlyContinue) {
+           Elseif ($IPname1 = Get-DhcpServerv4Lease -ComputerName "DHCPSERVER ADDRESS" -IPAddress $blankip -ErrorAction SilentlyContinue) {
            $namefound1 = $IPname1.Name
            $MACfound1 = $IPname1.ClientId
            $IPnamefound1 = New-Object PSObject
